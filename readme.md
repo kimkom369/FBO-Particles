@@ -1,4 +1,4 @@
-# Three.js + Vite.js starter pack
+# Three.js FBO Particles Technique
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
