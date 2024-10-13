@@ -1,5 +1,7 @@
 # Three.js FBO Particles Technique
 
+![](images/fbo_particles.gif)
+
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
