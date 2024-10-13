@@ -1,20 +1,21 @@
-uniform vec2 uResolution;
+uniform vec2 resolution;
 uniform float uSize;
+uniform sampler2D uPositions;
+uniform float time;
 
-varying vec3 vColor;
+varying vec4 vColor;
+varying vec2 vUv;
 
-void main()
-{
-    // Final position
-    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
-    vec4 viewPosition = viewMatrix * modelPosition;
-    vec4 projectedPosition = projectionMatrix * viewPosition;
-    gl_Position = projectedPosition;
+void main() {
+    vUv = uv;
+    vec4 pos = texture2D(uPositions, vUv);
 
-    // Point size
-    gl_PointSize = uSize * uResolution.y;
-    gl_PointSize *= (1.0 / - viewPosition.z);
+    float angle = atan(pos.y, pos.x);
 
-    // Varyings
-    vColor = vec3(0.16, 0.45, 0.77);
+    vColor = 0.8 * vec4(0.5 + 0.3 * sin(angle + time * 0.4));
+
+    vec4 mvPosition = modelViewMatrix * vec4(pos.xyz, 1.0);
+
+    gl_PointSize = 10.0 * (1.0 / -mvPosition.z);
+    gl_Position = projectionMatrix * mvPosition;
 }

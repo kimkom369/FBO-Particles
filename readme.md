@@ -1,4 +1,4 @@
-# Three.js Journey
+# Three.js + Vite.js starter pack
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
